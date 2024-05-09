@@ -3,11 +3,11 @@ import numpy as np
 from std_msgs.msg import String
 from sensor_msgs.msg import JointState
 from dynamixel_workbench_msgs.srv import DynamixelCommand
-offset=[0,0,0,0,0]
+offset = [512,512,512,512,512]
 def callback(data):
     global PosActual,PosReal
     PosReal=np.multiply(data.position,180/np.pi)
-    PosActual=np.add(PosReal,offset)
+    PosActual=np.add(PosReal,-offset)
     
 def listener():
     rospy.init_node('joint_listener', anonymous=True)
@@ -17,7 +17,7 @@ def listener():
 def moveRobot(pos,time):
     print(len(pos))
     for i in range(len(pos)):
-        jointCommand('',i+1,'Goal_Position',pos[i],time)
+        jointCommand('',i+1,'Goal_Position',pos[i]+offset,time)
         time.sleep(0.2)
 
 def jointCommand(command, id_num, addr_name, value, time):
