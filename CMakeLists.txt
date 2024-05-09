@@ -8,9 +8,10 @@ project(dynamixel_unal)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  dynamizel_workbench
-  rsopyroscpp
-  srd:msgs
+  dynamixel_workbench_controllers
+  rospy
+  roscpp
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
