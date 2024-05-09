@@ -3,12 +3,12 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 #import numpy as np
-Offset = [0,0,0,0,0]
+Offset = [512,512,512,512,512]
 DEGS=[[0, 0, 0, 0, 0],
       [-20, 20, -20, 20, 0],
       [30,-30, 30, -30, 0],
       [-90, 15, -55, 17, 0],
-      [ -90, 45, -55, 45, 10]]
+      [ -90, 45, -55, 45, 10]]*1/0.29
 def printMessage():
     return messagebox.showinfo("Hola")
 
