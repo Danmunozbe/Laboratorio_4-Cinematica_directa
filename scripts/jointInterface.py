@@ -8,18 +8,16 @@ DEGS=[[0, 0, 0, 0, 0],
       [-20, 20, -20, 20, 0],
       [30,-30, 30, -30, 0],
       [-90, 15, -55, 17, 0],
-      [ -90, 45, -55, 45, 10]]*1/0.29
+      [ -90, 45, -55, 45, 10]]
 def printMessage():
     return messagebox.showinfo("Hola")
 
-
-
 if __name__ =='__main__':
-    #listener()
+    listener()
     global Goal
     WIDTH,HEIGHT= 1440,1080
     W=100
-    H=100
+    H=50
     window=tk.Tk()
     window.title('Dynamixel Interface')
     #Home and Teach
