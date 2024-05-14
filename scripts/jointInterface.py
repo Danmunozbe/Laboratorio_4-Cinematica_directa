@@ -2,8 +2,8 @@ from jointRos import*
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+import numpy as np
 
-#import numpy as np
 Offset = [512,512,512,512,512]
 DEGS=[[0, 0, 0, 0, 0],
       [-20, 20, -20, 20, 0],
@@ -25,6 +25,9 @@ if __name__ =='__main__':
     #Home and Teach
     window.geometry('%sx%s' % (WIDTH,HEIGHT))
     Goal=tk.IntVar()
+    RobotPlace=tk.StringVar()
+    Goal.set(1)
+    RobotPlace.set(np.array2string(PosReal))
     def getGoal(value):
         print(value)
         return
@@ -43,5 +46,8 @@ if __name__ =='__main__':
     Pos4=tk.Radiobutton(window,text="4",variable=Goal,value=4).place(x=W,y=H*5)
     Pos5=tk.Radiobutton(window,text="5",variable=Goal,value=5).place(x=W,y=H*6)
 
+    #Position
+    ArtName=tk.Label(window,text="q1,q2,q3,q4,q5").place(x=W/2,y=H*5)
+    ArtName=tk.Label(window,textvariable=np.array2string(PosReal)).place(x=W/2,y=H*5)
     window.mainloop()
 
