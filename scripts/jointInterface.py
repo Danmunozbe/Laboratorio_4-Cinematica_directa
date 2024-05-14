@@ -2,6 +2,7 @@ from jointRos import*
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+
 #import numpy as np
 Offset = [512,512,512,512,512]
 DEGS=[[0, 0, 0, 0, 0],
@@ -20,6 +21,7 @@ if __name__ =='__main__':
     H=50
     window=tk.Tk()
     window.title('Dynamixel Interface')
+    
     #Home and Teach
     window.geometry('%sx%s' % (WIDTH,HEIGHT))
     Goal=tk.IntVar()

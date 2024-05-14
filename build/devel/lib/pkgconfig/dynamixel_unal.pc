@@ -1,0 +1,8 @@
+prefix=/home/chvargas/Robotik/Lab4/src/dynamixel_unal/build/devel
+
+Name: dynamixel_unal
+Description: Description of dynamixel_unal
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
