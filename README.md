@@ -49,3 +49,19 @@ def callback(data):
     return
 ```
 En esta funcion se toma ls informacion brindada por suscriptor, donde solo se toma el valor de la posicion y se traduce a radianes. Hay dos variables globales definidas. Como se menciono anteriormente, se coloca el motor a 150 grados, por lo que se espera que la posicion recibida por el nodo, sea estos 150 más el movimiento realizado. Sin embargo lo mostrado en la realizacion del laboratorio, el nodo ya tiene en cuenta este desfase, por tanto no es necesario tomar el valor con el calculo hecho a mano.
+## Comparacion de Configuraciones
+### Configuración 1 (Home): 0, 0, 0, 0
+![config1](imagenes/pos1M.png)
+<img src="imagenes/pos1P.jpg" width=500px>
+### Configuración 2: -20, 20, -20, 20
+![config1](imagenes/pos2M.png)
+<img src="imagenes/pos2P.jpg" width=500px>
+### Configuración 3: 30,-30, 30, -30
+![config1](imagenes/pos3M.png)
+<img src="imagenes/pos3P.jpg" width=500px>
+### Configuración 4: -90, 15, -55, 17
+![config1](imagenes/pos4M.png)
+<img src="imagenes/pos4P.jpg" width=500px>
+### Configuración 5: -90, 45, -55, 45
+![config1](imagenes/pos4M.png)
+<img src="imagenes/pos4P.jpg" width=500px>
