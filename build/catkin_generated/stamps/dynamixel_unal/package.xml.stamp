@@ -49,15 +49,15 @@
   <!-- Use doc_depend for packages you need only for building documentation: -->
   <!--   <doc_depend>doxygen</doc_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>dynamizel_workbench</build_depend>
-  <build_depend>rsopyroscpp</build_depend>
+  <build_depend>dynamixel_workbench</build_depend>
+  <build_depend>roscpp</build_depend>
   <build_depend>srd:msgs</build_depend>
-  <build_export_depend>dynamizel_workbench</build_export_depend>
+  <build_export_depend>dynamixel_workbench</build_export_depend>
   <build_export_depend>rsopyroscpp</build_export_depend>
-  <build_export_depend>srd:msgs</build_export_depend>
-  <exec_depend>dynamizel_workbench</exec_depend>
-  <exec_depend>rsopyroscpp</exec_depend>
-  <exec_depend>srd:msgs</exec_depend>
+  <build_export_depend>std:msgs</build_export_depend>
+  <exec_depend>dynamixel_workbench</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>std:msgs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

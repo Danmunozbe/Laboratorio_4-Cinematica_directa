@@ -56,7 +56,7 @@ class MyViz( QWidget ):
         ## VisualizationFrame reads its data from the config object.
         reader = rviz.YamlConfigReader()
         config = rviz.Config()
-        reader.readFile( config, "config.myviz" )
+        reader.readFile( config, "config.rviz" )
         self.frame.load( config )
 
         ## You can also store any other application data you like in
@@ -144,7 +144,7 @@ class MyViz( QWidget ):
                 view_man.setCurrentFrom( view_man.getViewAt( i ))
                 return
         print( "Did not find view named %s." % view_name )
-
+    
 ## Start the Application
 ## ^^^^^^^^^^^^^^^^^^^^^
 ##
@@ -153,7 +153,7 @@ class MyViz( QWidget ):
 ## class, and start Qt's main event loop (app.exec_()).
 if __name__ == '__main__':
     app = QApplication( sys.argv )
-
+    global H
     myviz = MyViz()
     myviz.resize( 500, 500 )
     myviz.show()

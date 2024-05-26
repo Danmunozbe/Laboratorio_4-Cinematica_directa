@@ -8,7 +8,7 @@ offset = [512,512,512,512,512]
 def callback(data):
     global PosActual,PosReal
     PosReal=np.rad2deg(data.position) 
-    PosActual=np.subtract(PosReal,np.multiply(offset,0.29))
+    #PosActual=np.subtract(PosReal,np.multiply(offset,0.29))
     return
 
 def listener():
@@ -23,7 +23,7 @@ def moveRobot(pos,t):
         time.sleep(0.2)
     time.sleep(2)
     print(PosReal)
-    print(PosActual)
+    #print(PosActual)
     return
 
 def jointCommand(command, id_num, addr_name, value, time):

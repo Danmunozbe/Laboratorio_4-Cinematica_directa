@@ -1,14 +1,18 @@
 <launch>
+  <!-- Port -->
   <arg name="usb_port"                default="/dev/ttyUSB0"/>
+  <!-- Dynamixel FTDI baudrate -->
   <arg name="dxl_baud_rate"           default="1000000"/>
+  <!-- Nodes Namespace -->
   <arg name="namespace"               default="dynamixel_workbench"/>
-
+  <!-- Mics options -->
   <arg name="use_moveit"              default="false"/>
   <arg name="use_joint_state"         default="true"/>
   <arg name="use_cmd_vel"             default="false"/>
 
-  <param name="dynamixel_info"          value="$(find dynamixel_workbench_controllers)/config/params.yaml"/>
-
+  <!-- Load the motors configuration -->
+  <param name="dynamixel_info"          value="$(find dynamixel_unal)/config/basic.yaml"/>
+  
   <node name="$(arg namespace)" pkg="dynamixel_workbench_controllers" type="dynamixel_workbench_controllers"
         required="true" output="screen" args="$(arg usb_port) $(arg dxl_baud_rate)">
     <param name="use_moveit"              value="$(arg use_moveit)"/>
@@ -22,5 +26,6 @@
         seperation_between_wheels: 0.160  <!--default value is set by reference of TB3-->
         radius_of_wheel: 0.033            <!--default value is set by reference of TB3-->
     </rosparam>
+    <remap from="/dynamixel_workbench/joint_trajectory" to="joint_trajectory"/>
   </node>
 </launch>
