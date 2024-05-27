@@ -153,7 +153,7 @@ En principio, se planteó una configuración diferente de las enunciadas para el
 
 A continuación, se puede acceder a la demostración del funcionamiento de la manipulación del robot mediante Rospy y RVIZ. Para acceder al video, se puede dar click en la imagen:
 <p align="center">
-    <a href="https://youtu.be/Ho8k9srPNIc">
+    <a href="https://youtu.be/YKizvcG3at4">
     <img src="imagenes/miniatura.png" width="600px" alt="rviz">
     </a>
 </p>
