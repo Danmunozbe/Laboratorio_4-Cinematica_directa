@@ -68,7 +68,9 @@ En primer lugar, se definió el diagrama del mecanismo en una posición completa
     <img src="imagenes/dhst.png" width=500px>
 </p>
 
-A partir de lo anterior, se muestra la tabla con los parámetros correspondientes.
+A partir de lo anterior, se realizó la medida de las articulaciones del robot: L_1 = 0, pues se como se ve en la figura, se planteó ubicar los ejes Z_0 y Z_1 en el mismo punto; L_2 = 10.49 mm; L_3 = 10.78 cm y L_4 = 7.4 cm
+
+se muestra la tabla con los parámetros correspondientes.
 
 <p align="center">
 
@@ -85,8 +87,8 @@ A partir de lo anterior, se muestra la tabla con los parámetros correspondiente
 
 Se decidió realizar el código directamente en Python para la manipulación del robot. A continuación se detallan las funciones que se ejecutan para esta tarea: 
 
-Para la solucion, se hizo uso de un servicio y una subscripión a un topic.
-El servicio utilizado es `dynamixel_command` usando `Goal_position` como posición de direccion (direccion de la instruccion como nombre), donde ademas recibe el `ID` de la articulacion a mover (el cual se ha definido en un archivo .yaml), y la posición en bits (0-1023).
+Para la solución, se hizo uso de un servicio y una suscripión a un topic.
+El servicio utilizado es `dynamixel_command` usando `Goal_position` como posición de dirección (de la instruccion como nombre), donde además recibe el `ID` de la articulación a mover (el cual se ha definido en un archivo .yaml), y la posición en bits (0-1023).
 
 Para la posición incial se tomó un valor de registro de 512, basándose en la documentación del manual para los servomotores Dynamixel, en donde se indica que corresponde con 150°. De esta forma era posible tener un rango mayor de movimiento.
 
@@ -106,8 +108,8 @@ def moveRobot(pos,t):
     time.sleep(2)
     return
 ```
-La funcion recibe 2 parámetros, `pos` es un arreglo de ángulos, donde en cada posición se encuentra la posicion deseada de la articulación (en grados); y `t` es un valor de tiempo ensegundos para la funcion jointCommand.
-Nótese que dentro de la función se hace llamada a la función [jointCommand](README.md#jointcommand) a través de un ciclo, donde a este se le entrega el valor de la articulacion dividida en 0.29 pues cada unidad del registro equivale a 0.29 grados. Posteriormente, se le suma un valor offset que no es mas que el valor del registro en su posicion inicial (512 como se mencionó antes).  
+La función recibe 2 parámetros, `pos` es un arreglo de ángulos, donde en cada posición se encuentra la posición deseada de la articulación (en grados); y `t` es un valor de tiempo ensegundos para la función jointCommand.
+Nótese que dentro de la función se hace llamada a la función [jointCommand](README.md#jointcommand) a través de un ciclo, donde a este se le entrega el valor de la articulación dividida en 0.29 pues cada unidad del registro equivale a 0.29 grados. Posteriormente, se le suma un valor offset que no es más que el valor del registro en su posición inicial (512 como se mencionó antes).  
 ### jointCommand
 ``` python
 def jointCommand(command, id_num, addr_name, value, time):
@@ -121,14 +123,14 @@ def jointCommand(command, id_num, addr_name, value, time):
     except rospy.ServiceException as exc:
         print(str(exc))
 ```
-La funcion recibe 5 parametros, command, id_num, addr_name,value y time. En este caso command se deje como un string en blanco; id_num el numero de la articulacion, addr_name el string del la función a usar, value el valor del registro objetivo (es decir la posicion final de la articulacion) y time el tiempo en segundos para que ROS se 'duerma' y detecte excepciones. En el codigo se espera a que el comando este disponible, y luego se intenta realizar la accion del servicio.
+La función recibe 5 parámetros, command, id_num, addr_name,value y time. En este caso command se deje como un string en blanco; id_num el número de la articulación, addr_name el string del la función a usar, value el valor del registro objetivo (es decir la posición final de la articulación) y time el tiempo en segundos para que ROS se 'duerma' y detecte excepciones. En el código se espera a que el comando esté disponible, y luego se intenta realizar la acción del servicio.
 ### listener
 ``` python
 rospy.init_node('joint_listener', anonymous=True)
     rospy.Subscriber("/dynamixel_workbench/joint_states", JointState, callback)
     return
 ```
-Para leer la configuracion actual del robot, se suscribe al topic joint_states que recibe la velocida, torque y posicion de las articulaciones. Estos datos luego son usados en la funcion callback
+Para leer la configuracion actual del robot, se suscribe al topic joint_states que recibe la velocidad, torque y posición de las articulaciones. Estos datos luego son usados en la funcion callback
 ### callback
 ``` python
 def callback(data):
@@ -137,7 +139,7 @@ def callback(data):
     PosActual=np.subtract(PosReal,np.multiply(offset,0.29))
     return
 ```
-En esta funcion se toma ls informacion brindada por suscriptor, donde solo se toma el valor de la posicion y se traduce a radianes. Hay dos variables globales definidas. Como se menciono anteriormente, se coloca el motor a 150 grados, por lo que se espera que la posicion recibida por el nodo, sea estos 150 más el movimiento realizado. Sin embargo lo mostrado en la realizacion del laboratorio, el nodo ya tiene en cuenta este desfase, por tanto no es necesario tomar el valor con el calculo hecho a mano.
+En esta función se toma a información brindada por suscriptor, donde solo se toma el valor de la posición y se traduce a radianes. Hay dos variables globales definidas. Como se mencionó anteriormente, se coloca el motor a 150 grados, por lo que se espera que la posición recibida por el nodo, sea estos 150 más el movimiento realizado. Sin embargo lo mostrado en la realización del laboratorio, el nodo ya tiene en cuenta este desfase, por tanto no es necesario tomar el valor con el calculo hecho a mano.
 
 ## Interfaz gráfica: RVIZ (Python y ROS)
 
