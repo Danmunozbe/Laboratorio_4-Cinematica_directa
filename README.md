@@ -78,6 +78,7 @@ A partir de lo anterior, se muestra la tabla con los parámetros correspondiente
 | 2  | θ_2  | 0    | 10.49 | 0    | π/2    |
 | 3  | θ_3  | 0    | 10.78 | 0    | π/2    |
 | 4  | θ_4  | 0    | 7.46  | π/2  | 0      |
+
 </p>
 
 ## ROS: integración rospy
